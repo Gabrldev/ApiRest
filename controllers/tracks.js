@@ -46,7 +46,7 @@ const updateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
   try {
     const { id } = matchedData(req);
-    const data = await tracksModel.findOneAndDelete(id);
+    const data = await tracksModel.delete({ _id: id });
     res.send({message: "Item eliminado correctamente", data});
   } catch (error) {
     console.log(error);
