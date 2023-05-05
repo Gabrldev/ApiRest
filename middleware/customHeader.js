@@ -1,16 +1,16 @@
 const customHeader = (req, res, next) => {
   try {
-    const apiKey = req.headers.api_key;
-    if (apiKey === "neway") {
-      next();
+    const apiKey = req.headers.api_key
+    if (apiKey === 'neway') {
+      next()
     } else {
-      res.status(403);
-      res.send({ error: "Api key is not valid" });
+      res.status(403)
+      res.send({ error: 'Api key is not valid' })
     }
   } catch (error) {
-    res.status(403);
-    res.send({ error: "Forbidden" });
+    res.status(403)
+    res.send({ error: 'Forbidden' })
   }
-};
+}
 
-module.exports = customHeader;
+module.exports = customHeader

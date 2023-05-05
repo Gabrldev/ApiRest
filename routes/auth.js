@@ -1,13 +1,10 @@
-const express = require("express");
-const router = express.Router();
-const {validatorLogin,validatorRegister} = require("../validator/auth");
-const { matchedData } = require("express-validator");
+const express = require('express')
+const router = express.Router()
+const { validatorLogin, validatorRegister } = require('../validator/auth')
+const { registerCtrl, loginCtrl } = require('../controllers/auth')
 
-//crear item
-router.post("/register", validatorRegister, (req, res, next) => {
-    req = matchedData(req);
-    res.send({data: req})
-});
+// crear item
+router.post('/register', validatorRegister, registerCtrl)
+router.post('/login', validatorLogin, loginCtrl)
 
-
-module.exports = router;
+module.exports = router
