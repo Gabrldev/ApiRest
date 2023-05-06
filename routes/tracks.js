@@ -6,7 +6,7 @@ const checkRol = require('../middleware/rol')
 
 const router = express.Router()
 // listar items
-router.get('/', authMiddleware, validatorGetItem, getItems)
+router.get('/', authMiddleware, getItems)
 // crear item
 router.post('/', authMiddleware, checkRol(['admin']), validatorCreateItem, createItem)
 // listar item por id

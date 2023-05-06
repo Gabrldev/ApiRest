@@ -1,6 +1,13 @@
-const handleHttpError = (res, message = 'Algo salió mal', code = 403) => {
+const { default: axios } = require("axios")
+
+const handleHttpError = async (res, message = 'Algo salió mal', code = 403) => {
+try {
+  res.setHeader('Access-Control-Allow-Origin', '*')
   res.status(code)
   res.send({ error: message })
+} catch (error) {
+  console.log(error);
+}
 }
 
 module.exports = { handleHttpError }
