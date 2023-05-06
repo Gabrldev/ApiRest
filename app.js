@@ -2,22 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const dbConect = require('./config/mongo');
+const logger = require('./utils/handlewebhook');
 const morganbody = require('morgan-body');
-const discordWebhook = require('webhook-discord');
 
-const Hook = new discordWebhook.Webhook(process.env.WEBHOOK_URL);
 
 
 const app = express();
+app.enable("trust proxy");
 app.use(cors());
 app.use(express.json());
 app.use(express.static('storage'))
 
-const logger = {
-    write: messagge =>{
-        Hook.err("ERROR API REST", messagge)
-    }
-}
+
 morganbody(app,{
     noColors: true,
     stream: logger,
