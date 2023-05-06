@@ -1,8 +1,6 @@
-const { default: axios } = require("axios")
-
 const handleHttpError = async (res, message = 'Algo salió mal', code = 403) => {
 try {
-  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Authorization', 'auth')
   res.status(code)
   res.send({ error: message })
 } catch (error) {
